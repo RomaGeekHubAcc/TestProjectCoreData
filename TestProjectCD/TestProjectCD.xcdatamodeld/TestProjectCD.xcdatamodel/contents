@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="CDOrder" representedClassName="CDOrder" syncable="YES">
+        <attribute name="orderDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="shopName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="totalPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="purchases" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDPurchase" inverseName="order" inverseEntity="CDPurchase" syncable="YES"/>
+    </entity>
+    <entity name="CDProduct" representedClassName="CDProduct" syncable="YES">
+        <attribute name="productDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productPrice" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="sell" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDPurchase" inverseName="products" inverseEntity="CDPurchase" syncable="YES"/>
+    </entity>
+    <entity name="CDPurchase" representedClassName="CDPurchase" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalSum" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="order" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CDOrder" inverseName="purchases" inverseEntity="CDOrder" syncable="YES"/>
+        <relationship name="products" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDProduct" inverseName="sell" inverseEntity="CDProduct" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDOrder" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="CDProduct" positionX="-180" positionY="120" width="128" height="105"/>
+        <element name="CDPurchase" positionX="268" positionY="243" width="128" height="105"/>
+    </elements>
+</model>
